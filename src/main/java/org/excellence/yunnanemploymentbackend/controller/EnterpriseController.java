@@ -1,6 +1,7 @@
 package org.excellence.yunnanemploymentbackend.controller;
 
 import org.excellence.yunnanemploymentbackend.entity.EnterpriseInfo;
+import org.excellence.yunnanemploymentbackend.entity.Notice;
 import org.excellence.yunnanemploymentbackend.entity.ReportedData;
 import org.excellence.yunnanemploymentbackend.entity.Response;
 import org.excellence.yunnanemploymentbackend.service.EnterpriseService;
@@ -15,6 +16,8 @@ import java.util.Optional;
 public class EnterpriseController {
     @Autowired
     private EnterpriseService enterpriseService;
+
+
 
     @PostMapping(path = "inforeport")
     public @ResponseBody Response<Void> inforeport(@RequestBody List<EnterpriseInfo> enterpriseInfoList) {
@@ -55,4 +58,19 @@ public class EnterpriseController {
             return new Response<>(false, ex.getMessage(), null);
         }
     }
+
+    //enterprise 显示全部通知
+    @GetMapping(path = "notice/getall")
+    public @ResponseBody Response<List<Notice>> getAllNotice() {
+        try{
+            List<Notice> allNotice = enterpriseService.getAllNotice();
+            return new Response<>(true,"Notice got successfully", allNotice);
+
+        } catch (Exception ex) {
+            return new Response<>(false, ex.getMessage(), null);
+        }
+    }
+
+
+
 }

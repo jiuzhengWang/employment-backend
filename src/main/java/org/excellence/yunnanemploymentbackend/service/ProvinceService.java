@@ -3,10 +3,7 @@ package org.excellence.yunnanemploymentbackend.service;
 import org.excellence.yunnanemploymentbackend.entity.EnterpriseInfo;
 import org.excellence.yunnanemploymentbackend.entity.Notice;
 import org.excellence.yunnanemploymentbackend.entity.ReportedData;
-import org.excellence.yunnanemploymentbackend.repository.EnterpriseInfoRepository;
-import org.excellence.yunnanemploymentbackend.repository.EnterpriseRepository;
-import org.excellence.yunnanemploymentbackend.repository.ProvinceRepository;
-import org.excellence.yunnanemploymentbackend.repository.ReportedDataRepository;
+import org.excellence.yunnanemploymentbackend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +25,9 @@ public class ProvinceService {
 
     @Autowired
     private ReportedDataRepository reportedDataRepository;
+
+    @Autowired
+    private NoticeRepository noticeRepository;
 
     /**
      * 查看所有已备案企业信息
@@ -154,6 +154,7 @@ public class ProvinceService {
      */
     public Boolean releaseNotice(String provinceUserId, Notice notice) {
         // TODO: 发布通知
+        noticeRepository.save(notice);
         return true;
     }
 }

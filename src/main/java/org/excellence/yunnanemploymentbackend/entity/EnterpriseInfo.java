@@ -25,6 +25,6 @@ public class EnterpriseInfo {
     private String address; // 联系地址
     private String postalCode; // 邮政编码
     private String phoneNumber; // 联系电话
-    private String fax;
-    private String email;
+    private String fax; // 传真
+    private String email; // 电子邮件
 }

@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class Notice {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer noticeId;
+    private String title;
     private String content; // 通知内容
     private String date; // 发布日期
 }
